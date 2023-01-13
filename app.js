@@ -6,24 +6,25 @@ let alarm = document.querySelector("#alarm");
 
 
 let timer = null;
-let defaultSeconds= 20
-let seconds = 20; // 25 minutes
+let defaultSeconds= 25
+let seconds = 25; // 25 minutes
 
 startBtn.addEventListener("click", startTimer);
 stopBtn.addEventListener("click", stopTimer);
 resetBtn.addEventListener("click", resetTimer);
 
 function startTimer() {
-  timer = setInterval(() => {
-    seconds--;
-    updateTimerDisplay();
-
-    if (seconds === 0) {
-      stopTimer();
-      alert("¡El tiempo ha terminado!");
-    }
-  }, 1000);
-}
+    timer = setInterval(() => {
+      seconds--;
+      updateTimerDisplay();
+  
+      if (seconds === 0) {
+        stopTimer();
+        alarm.play();
+        resetTimer(); 
+      }
+    }, 1000);
+  }
 
 function stopTimer() {
   clearInterval(timer);
@@ -31,9 +32,10 @@ function stopTimer() {
 
 function resetTimer() {
   stopTimer();
-  seconds = defaultSeconds;
+  seconds = defaultSeconds
   updateTimerDisplay();
 }
+
 
 function updateTimerDisplay() {
     let minutes = Math.floor(seconds / 60);
@@ -42,15 +44,4 @@ function updateTimerDisplay() {
     document.title = `${minutes}:${remainderSeconds < 10 ? "0" : ""}${remainderSeconds} - Pomodoro APP`;
 }
 
-function startTimer() {
-  timer = setInterval(() => {
-    seconds--;
-    updateTimerDisplay();
 
-    if (seconds === 0) {
-      stopTimer();
-      alarm.play();
-      resetTimer()
-    }
-  }, 1000);
-}
