@@ -21,6 +21,7 @@ stopBtn.addEventListener("click", stopTimer);
 resetBtn.addEventListener("click", resetTimer);
 
 function startTimer() {
+    startBtn.disabled = true;
     timer = setInterval(() => {
       seconds--;
       updateTimerDisplay();
@@ -37,11 +38,17 @@ function stopTimer() {
   clearInterval(timer);
   clearInterval(breakTimer);
   clearInterval(timerDuration);
+  startBtn.disabled = false;
 }
 
 function resetTimer() {
   stopTimer();
-  seconds = timerDuration * 60
+  if(isBreak){
+    seconds = breakDuration * 60
+  }else{
+    seconds = timerDuration * 60
+  }
+  startBtn.disabled = false;
   updateTimerDisplay();
 }
 
@@ -54,6 +61,7 @@ function updateSettings(event) {
 }
 
 function startBreak() {
+  startBtn.disabled = true;
   isBreak = true;
   seconds = breakDuration * 60;
   breakTimer = setInterval(() => {
