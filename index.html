@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,14 @@
     <link rel="stylesheet" href="./styles.css">
     <title>Podomoro</title>
 </head>
+
 <body>
     <div id="pomodoro-app">
         <div id="timer">25:00</div>
         <div id="controls">
-          <button id="start">Iniciar</button>
-          <button id="stop">Detener</button>
-          <button id="reset">Reiniciar</button>
+            <button id="start">Iniciar</button>
+            <button id="stop">Detener</button>
+            <button id="reset">Reiniciar</button>
         </div>
         <form id="settings-form">
             <label for="timer-duration">Duración del temporizador:</label>
@@ -24,18 +26,20 @@
             <br>
             <button type="submit">Guardar configuración</button>
         </form>
-        <div id="task-list">
-        <form id="task-form">
-            <label for="task-input">Tareas:</label>
-            <input id="task-input" type="text">
-            <button class="task-button" type="submit">Agregar</button>
-          </form>
+        <div id="task-container">
+            <h2 class="task-title">Lista de tareas</h2>
+            <form id="task-form">
+                <input type="text" id="task-input" placeholder="Ingresa una tarea">
+                <button id="add-task-button">Agregar</button>
+            </form>
+            <ul id="task-list"></ul>
         </div>
     </div>
-    
-    
-    <audio id="alarm" src="alarm.mp3"></audio>
 
+
+    <audio id="alarm" src="alarm.mp3"></audio>
+    <script src="./task.js"></script>
     <script src="./app.js"></script>
 </body>
+
 </html>
