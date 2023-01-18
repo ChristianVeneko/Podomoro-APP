@@ -29,6 +29,7 @@ function startTimer() {
       if (seconds === 0) {
         stopTimer();
         alarm.play();
+        isBreak = true
         startBreak(); 
       }
     }, 1000);
@@ -62,7 +63,6 @@ function updateSettings(event) {
 
 function startBreak() {
   startBtn.disabled = true;
-  isBreak = true;
   seconds = breakDuration * 60;
   breakTimer = setInterval(() => {
     seconds--;
@@ -71,6 +71,7 @@ function startBreak() {
     if (seconds === 0 && isBreak) {
       stopTimer();
       alarm.play();
+      isBreak = false
       resetTimer();
     }
   }, 1000);
